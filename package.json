@@ -16,5 +16,6 @@
   "bugs": {
     "url": "https://github.com/chuelmo/coderhouse-back-32240/issues"
   },
-  "homepage": "https://github.com/chuelmo/coderhouse-back-32240#readme"
+  "homepage": "https://github.com/chuelmo/coderhouse-back-32240#readme",
+  "type": "module"
 }
