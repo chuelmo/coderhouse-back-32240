@@ -1,6 +1,6 @@
-const fs = require('fs')
+import fs from 'fs'
 
-const leerArchivo = async nombre => {
+const leerArchivo = async (nombre) => {
     try {
         let contenidoStr = await fs.promises.readFile(nombre, 'utf-8')
         let contenidoObj = JSON.parse(contenidoStr)
@@ -23,7 +23,6 @@ const resultado = async () => {
     } catch (e) {
         throw new Error(e)
     }
-    
 }
 
 (async function main() {

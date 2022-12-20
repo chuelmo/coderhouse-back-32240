@@ -5,7 +5,8 @@ Realizar un programa que cree un archivo en el cual escriba la fecha y la hora a
 Utilizar el módulo fs y sus operaciones de tipo callback.
 
 */
-const fs = require('fs')
+import fs from 'fs'
+
 let ahora = new Date()
 let fecha = ahora.toISOString()
 fs.writeFile('fechaHora.txt', fecha, (error) => {
