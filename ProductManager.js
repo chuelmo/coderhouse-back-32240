@@ -7,6 +7,7 @@ export default class ProductManager {
         this.exists = false
     }
 
+    // verifica que el archivo donde hacemos la persistencia exista
     async checkExists() {
         let exists = true
         try {
@@ -18,6 +19,11 @@ export default class ProductManager {
         return exists
     }
 
+    // Este método además de devolver un array con todos los productos,
+    // verifica que el archivo exista y si no existe lo crea
+    // además es llamado por TODOS los otros métodos, la idea es
+    // siempre cargar todos los productos en un array antes de trabajar
+    // con ellos.
     async getProducts() {
         try {
             if (this.exists === false) {
@@ -35,6 +41,8 @@ export default class ProductManager {
         }
     }
 
+    // este método además de devolver el mayor id deja cargado
+    // el array de productos con todos los productos que hay
     async getMaxId() {
         try {
             await this.getProducts()
@@ -66,6 +74,7 @@ export default class ProductManager {
                 }
                 this.products.push(product)
                 await fs.promises.writeFile(this.path, JSON.stringify(this.products))
+                return product
             } else {
                 throw new Error('All fields are required')
             }
@@ -100,6 +109,14 @@ export default class ProductManager {
         }
     }
 
-
-
+    async deleteProduct(id) {
+        await this.getProducts()
+        const product = this.products.find(el => el.id === id)
+        if (product) {
+            const products = this.products.filter(el => el.id !== id)
+            await fs.promises.writeFile(this.path, JSON.stringify(products))
+        } else {
+            throw new Error(`The product with id ${id} does not exist`)
+        }
+    }
 }
