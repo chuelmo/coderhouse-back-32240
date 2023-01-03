@@ -1,0 +1,20 @@
+{
+  "name": "coderhouse-back-32240",
+  "version": "1.0.0",
+  "description": "Ejercicios y desafíos del curso de programación backend en Coderhouse - comisión 32240",
+  "main": "ej01.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chuelmo/coderhouse-back-32240.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chuelmo/coderhouse-back-32240/issues"
+  },
+  "homepage": "https://github.com/chuelmo/coderhouse-back-32240#readme"
+}
