@@ -21,6 +21,10 @@ Desarrollar un servidor basado en express donde podamos hacer consultas a nuestr
 - Tu clase lee archivos con promesas. recuerda usar async/await en tus endpoints
 - Utiliza un archivo que ya tenga productos, pues el desafío sólo es para gets.
 
+### Como correr el server
+
+npm start
+
 # coderhouse-back-32240
 
 Ejercicios y desafíos del curso de programación backend en Coderhouse - comisión 32240

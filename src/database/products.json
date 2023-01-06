@@ -1,0 +1,29 @@
+[
+  {
+    "id": 2,
+    "title": "Jarra",
+    "description": "Jarra eléctrica",
+    "price": 345,
+    "thumbnail": "WTJ5JkoJcB",
+    "code": "c8XBJz",
+    "stock": 13
+  },
+  {
+    "id": 4,
+    "title": "Reloj",
+    "description": "Reloj despertador",
+    "price": 611,
+    "thumbnail": "mJbvQ2VCwI",
+    "code": "jYCn1C",
+    "stock": 6
+  },
+  {
+    "id": 7,
+    "title": "Casco",
+    "description": "Casco de bicicleta trek",
+    "price": 720,
+    "thumbnail": "WssODyTDlI",
+    "code": "t6rLFA",
+    "stock": 12
+  }
+]
