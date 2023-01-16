@@ -1,0 +1,24 @@
+[
+    {
+        "id": 1,
+        "title": "Cocina",
+        "description": "Cocina a supergas",
+        "code": "cg348",
+        "price": 1790.55,
+        "status": true,
+        "stock": 5,
+        "category": "electrodomesticos",
+        "thumbnails": []
+    },
+    {
+        "id": 2,
+        "title": "Armario",
+        "description": "Mueble de dormitorio",
+        "code": "md3354",
+        "price": 90.5,
+        "status": true,
+        "stock": 7,
+        "category": "muebles",
+        "thumbnails": []
+    }
+]
