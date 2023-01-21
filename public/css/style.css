@@ -6,3 +6,22 @@
     background-color: pink;
     color: #ff2060;
 }
+
+.actions {
+    width: 32px;
+    height: 32px;
+    position: relative;
+    display: inline-block;
+}
+
+.actions .img-top {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99;
+}
+
+.actions:hover .img-top {
+    display: inline;
+}

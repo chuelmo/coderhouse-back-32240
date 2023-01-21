@@ -49,6 +49,7 @@
                     <th class="text-warning">Nombre</th>
                     <th class="text-warning">Precio</th>
                     <th class="text-warning">Imagen</th>
+                    <th class="text-warning">Actions</th>
                 </tr>
                 {{#each productos}}
                 <tr>
@@ -59,6 +60,16 @@
                         {{this.price}}
                     </td>
                     <td class="text-white"><img src="{{this.thumbnails}}" alt="imagen" height="64"></td>
+                    <td class="text-white">
+                        <div class="actions cambiar" id="xa{{this.id}}">
+                            <img src="./images/edit-front.png" alt="edit" id="xn{{this.id}}">
+                            <img src="./images/edit-back.png" alt="edit" class="img-top" id="xc{{this.id}}">
+                        </div>
+                        <div class="actions borrar" id="xt{{this.id}}">
+                            <img src="./images/delete-front.png" alt="delete" id="xb{{this.id}}">
+                            <img src="./images/delete-back.png" alt="delete" class="img-top" id="xd{{this.id}}">
+                        </div>
+                    </td>
                 </tr>
                 {{/each}}
             </table>
