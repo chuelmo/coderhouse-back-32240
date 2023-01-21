@@ -97,6 +97,7 @@ export default class ProductManager {
                 if (this.products.some((el) => el.code === newProduct.code)) {
                     throw new Error(`A product with the code ${newProduct.code} alredy exists`);
                 }
+                newProduct.thumbnails.push("./images/no-image.png");
                 const product = {
                     id: id + 1,
                     title: newProduct.title,

@@ -1,0 +1,35 @@
+{{!-- main.hbs --}}
+{{> barraMenu}}
+
+<main class="container fondo-gris p-5 mt-3">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-10 col-md-8">
+            <h1 class="mt-3 mb-3 text-primary">Acerca del desafío</h1>
+            <div class="rounded bg-light p-3">
+                <p><strong>&gt;&gt; Consigna:</strong> Configurar nuestro proyecto para que trabaje con Handlebars y websocket.</p>
+                <p><strong>&gt;&gt; Aspectos a incluir en el entregable:</strong></p>
+                <ul>
+                    <li>Configurar el servidor para integrar el motor de plantillas Handlebars e instalar un servidor de socket.io al mismo.</li>
+                    <li>Crear una vista "index.handlebars" la cual contenga una lista de todos los productos agregados hasta el momento.</li>
+                    <li>Además, crear una vista "realTimeProducts.handlebars", la cual vivirá en el endpoint "/realtimeproducts" en nuestro views router, esta contendrá la misma lista de productos, sin embargo, esta trabajará con websocket.
+                        <ul>
+                            <li>Al trabajar con websockets, cada vez que creemos un producto nuevo, o bien cada vez que eliminemos un producto, se debe actualizar automáticamente en dicha vista la lista.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p><strong>&gt;&gt; Sugerencias:</strong></p>
+                <ul>
+                    <li>Ya que la conexión entre una consulta HTTP y websocket no está contemplada dentro de la clase. Se recomienda que, para
+                    la creación y eliminación de un producto, se cree un formulario simple en la vista realTimeProducts.handlebars. Para que
+                    el contenido se envíe desde websockets y no HTTP.</li>
+                    <li>Si se desea hacer con HTTP, deberás buscar la forma de utilizar el servidor de Sockets dentro de la petición POST. ¿Cómo
+                    utilizarás un socket.emit dentro del POST?</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+</main>
+
+{{> piePagina}}

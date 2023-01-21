@@ -8,7 +8,7 @@
         "status": true,
         "stock": 5,
         "category": "electrodomesticos",
-        "thumbnails": []
+        "thumbnails": ["./images/no-image.png"]
     },
     {
         "id": 2,
@@ -19,6 +19,6 @@
         "status": true,
         "stock": 7,
         "category": "muebles",
-        "thumbnails": []
+        "thumbnails": ["./images/no-image.png"]
     }
 ]
