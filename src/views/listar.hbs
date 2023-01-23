@@ -63,7 +63,9 @@
                     <td class="text-white">
                         <div class="actions cambiar" id="xa{{this.id}}">
                             <img src="./images/edit-front.png" alt="edit" id="xn{{this.id}}">
-                            <img src="./images/edit-back.png" alt="edit" class="img-top" id="xc{{this.id}}">
+                            <img src="./images/edit-back.png" alt="edit" class="img-top"
+                                id="xc{{this.id}}:{{this.title}}:{{this.price}}" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop">
                         </div>
                         <div class="actions borrar" id="xt{{this.id}}">
                             <img src="./images/delete-front.png" alt="delete" id="xb{{this.id}}">
@@ -79,5 +81,25 @@
         </div>
     </div>
 </main>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Modificar datos del producto</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modal_id">
+                ...
+            </div>
+            <div class="modal-footer" id="id_modal_footer">
+                ...
+            </div>
+        </div>
+    </div>
+</div>
+
 
 {{> piePagina}}

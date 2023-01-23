@@ -1,1 +1,24 @@
-[{"id":1,"title":"Cocina","description":"Cocina a supergas","code":"cg348","price":1790.55,"status":true,"stock":5,"category":"electrodomesticos","thumbnails":["./images/cocina.jpg"]},{"id":2,"title":"Armario","description":"Mueble de dormitorio","code":"md3354","price":90.5,"status":true,"stock":7,"category":"muebles","thumbnails":["./images/armario.webp"]},{"id":3,"title":"Licuadora","description":"Los mejores jugos","code":"ll12","price":11,"status":false,"stock":11,"category":"Electrodomésticos","thumbnails":["./images/no-image.png"]},{"id":4,"title":"dsfsdf","description":"sdfsdf","code":"sdfsdf","price":33,"status":true,"stock":33,"category":"sdfsdf","thumbnails":["./images/no-image.png"]},{"id":5,"title":"sdf","description":"sdf","code":"sdf","price":23,"status":true,"stock":23,"category":"sdf","thumbnails":["./images/no-image.png"]},{"id":6,"title":"Ismael","description":"Un niño loquito","code":"nn23","price":2323,"status":true,"stock":2,"category":"loquito de amor","thumbnails":["./images/no-image.png"]},{"id":7,"title":"sdfgafdgadsfa","description":"asdfasdasdf","code":"asdfasdfewrwer","price":12,"status":true,"stock":12,"category":"asdfasdad","thumbnails":["./images/no-image.png"]}]
+[
+  {
+    "id": 1,
+    "title": "Armario",
+    "description": "Armario de pared",
+    "code": "cc34",
+    "price": 2234,
+    "status": true,
+    "stock": 3,
+    "category": "Muebles",
+    "thumbnails": ["./images/armario.webp"]
+  },
+  {
+    "id": 2,
+    "title": "Cocina",
+    "description": "Cocina 4 hornallas",
+    "code": "cv43",
+    "price": 223,
+    "status": true,
+    "stock": 2,
+    "category": "Linea blanca",
+    "thumbnails": ["./images/cocina.jpg"]
+  }
+]
