@@ -1,0 +1,31 @@
+{{!-- main.hbs --}}
+{{> barraMenu}}
+
+<main class="container fondo-gris p-5 mt-3">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-10 col-md-8">
+            <h1 class="mt-3 mb-3 text-primary">Acerca del desafío</h1>
+            <div class="rounded bg-light p-3">
+                <p><strong>&gt;&gt; Consigna:</strong> Continuar sobre el proyecto que hemos trabajado y configurar los
+                    siguientes elementos:</p>
+                <p><strong>&gt;&gt; Aspectos a incluir en el entregable:</strong></p>
+                <ul>
+                    <li>Agregar el modelo de persistencia de Mongo usando mongoose.</li>
+                    <li>Crear una db llamada "ecommerce", crear las colecciones "carts", "productos" y "messages".</li>
+                    <li>Separar los Managers de file system y de MongoDb dentro de una carpeta "dao".
+                    </li>
+                    <li>Implementar una vista nueva en handlebars llamada chat, en ella se implementará un chat como el
+                        visto en clase.</li>
+                </ul>
+                <p><strong>&gt;&gt; Como ejecutar el proyecto:</strong></p>
+                <ul>
+                    <li>npm start (desde la carpeta raíz del proyecto)</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+</main>
+
+{{> piePagina}}
