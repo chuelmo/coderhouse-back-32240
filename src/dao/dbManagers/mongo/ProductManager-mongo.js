@@ -5,6 +5,7 @@ export default class ProductManager {
     console.log(
       `Working with mongoose, the path ${path} it is only for compatibility`
     );
+    this.products = [];
   }
 
   async getProducts() {
