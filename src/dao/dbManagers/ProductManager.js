@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 
 import { default as ProductManagerFS } from "./fs/ProductManager-fs.js";
 import { default as ProductManagerDummy } from "./dummy/ProductManager-dummy.js";
+import { default as ProductManagerMongo } from "./mongo/ProductManager-mongo.js";
 
 dotenv.config();
 
@@ -14,6 +15,9 @@ switch (DB_TYPE) {
     break;
   case "FS":
     ProductManager = ProductManagerFS;
+    break;
+  case "MONGO":
+    ProductManager = ProductManagerMongo;
     break;
   default:
     ProductManager = ProductManagerDummy;
