@@ -151,6 +151,23 @@ const boton = document.getElementById("enviar");
 boton?.addEventListener("click", enviarDatos);
 addActionsToButtons();
 
+const input_msg = document.getElementById("msg_input_text");
+const msg_textarea = document.getElementById("msg_textarea");
+input_msg.addEventListener("keyup", (evt) => {
+  if (evt.key === "Enter") {
+    const frase = input_msg.value.trim();
+    if (frase.length > 0) {
+      if (frase.substring(0, 1) === "/") {
+        msg_textarea.value += "COMANDO: " + frase.substring(1) + "\n";
+        input_msg.value = "";
+      } else {
+        msg_textarea.value += frase + "\n";
+        input_msg.value = "";
+      }
+    }
+  }
+});
+
 socket.on("all_productos", (productos) => {
   div_prod = document.getElementById("productos");
   let html = "";
