@@ -147,26 +147,53 @@ function addActionsToButtons() {
   }
 }
 
+function enviarMensaje(evt) {
+  if (evt.key === "Enter") {
+    const frase = input_msg.value.trim();
+    if (frase.length > 0) {
+      let today = new Date();
+      let ahora = today.toLocaleString();
+      if (frase.substring(0, 1) === "/") {
+        let texto = frase.substring(1);
+        msg_textarea.innerHTML += `
+        <div class="chat-message-right mb-4">
+          <div>
+              <img src="./images/avatar1.png"
+                  class="rounded-circle mr-1" alt="usuario" width="40" height="40">
+              <div class="text-muted small text-nowrap mt-2">${ahora}</div>
+          </div>
+          <div class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
+              <div class="font-weight-bold mb-1">You</div>
+              ${texto}
+          </div>
+        </div>`;
+        input_msg.value = "";
+      } else {
+        msg_textarea.innerHTML += `
+          <div class="chat-message-left pb-4">
+            <div>
+                <img src="./images/avatar3.png"
+                    class="rounded-circle mr-1" alt="usuario" width="40" height="40">
+                <div class="text-muted small text-nowrap mt-2">${ahora}</div>
+            </div>
+            <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
+                <div class="font-weight-bold mb-1">Sharon Lessman</div>
+                ${frase}
+            </div>
+          </div>`;
+        input_msg.value = "";
+      }
+    }
+  }
+}
+
 const boton = document.getElementById("enviar");
 boton?.addEventListener("click", enviarDatos);
 addActionsToButtons();
 
 const input_msg = document.getElementById("msg_input_text");
 const msg_textarea = document.getElementById("msg_textarea");
-input_msg.addEventListener("keyup", (evt) => {
-  if (evt.key === "Enter") {
-    const frase = input_msg.value.trim();
-    if (frase.length > 0) {
-      if (frase.substring(0, 1) === "/") {
-        msg_textarea.value += "COMANDO: " + frase.substring(1) + "\n";
-        input_msg.value = "";
-      } else {
-        msg_textarea.value += frase + "\n";
-        input_msg.value = "";
-      }
-    }
-  }
-});
+input_msg?.addEventListener("keyup", enviarMensaje);
 
 socket.on("all_productos", (productos) => {
   div_prod = document.getElementById("productos");
