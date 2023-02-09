@@ -5,9 +5,11 @@ import handlebars from "express-handlebars";
 import { Server } from "socket.io";
 import { default as productsRouter } from "./routes/products.js";
 import { default as cartsRouter } from "./routes/carts.js";
+import { default as messagesRouter } from "./routes/messages.js";
 import { default as viewsRouter } from "./routes/views.js";
 import * as Utils from "./utils/utils.js";
 import ProductManager from "./dao/dbManagers/ProductManager.js";
+import MessageManager from "./dao/dbManagers/MessageManager.js";
 
 dotenv.config();
 
@@ -40,6 +42,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/products", productsRouter);
 app.use("/api/carts", cartsRouter);
+app.use("/api/messages", messagesRouter);
 app.use(express.static("./public"));
 app.use("/", viewsRouter);
 
@@ -61,5 +64,16 @@ socketServer.on("connection", async (socket) => {
       productos = [];
     }
     socketServer.sockets.emit("all_productos", productos);
+  });
+
+  socket.on("new-message", async () => {
+    const mm = new MessageManager(Utils.PATH_MESSAGES);
+    let mensajes = [];
+    try {
+      mensajes = await mm.getMessages();
+    } catch (e) {
+      mensajes = [];
+    }
+    socketServer.sockets.emit("all_mensajes", mensajes);
   });
 });

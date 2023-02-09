@@ -5,19 +5,19 @@ const messagesCollection = "messages";
 const messagesSchema = new mongoose.Schema({
   user: {
     type: String,
-    require: true,
+    required: true,
   },
   date: {
-    type: Date,
-    require: true,
+    type: String,
+    required: true,
   },
   message: {
     type: String,
-    require: true,
+    required: true,
   },
-  color: {
+  avatar: {
     type: String,
-    default: "black",
+    required: true,
   },
 });
 

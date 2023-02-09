@@ -29,22 +29,12 @@ export default class MessageManager {
   }
 
   checkFields(msg) {
-    const { user, date, message, color } = msg;
+    const { user, date, message, avatar } = msg;
     let ok = true;
     if (typeof user !== "string") ok = false;
-    if (typeof date !== "Date") ok = false;
+    if (typeof date !== "string") ok = false;
     if (typeof message !== "string") ok = false;
-    if (typeof color !== "string") {
-      ok = false;
-    } else if (
-      color !== "red" ||
-      color !== "yellow" ||
-      color !== "green" ||
-      color !== "orange" ||
-      color !== "blue"
-    ) {
-      msg.color = "black";
-    }
+    if (typeof avatar !== "string") ok = false;
     if (ok) {
       return msg;
     } else {

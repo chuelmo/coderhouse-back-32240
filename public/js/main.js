@@ -3,6 +3,15 @@ const socket = io.connect();
 let deleteButtons;
 let editButtons;
 
+const avatar = "avatar" + getRandomInt(1, 8) + ".png";
+let usuario = "XnobodyX_";
+
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 function enviarDatos() {
   let nombre = document.getElementById("title");
   let desc = document.getElementById("description");
@@ -65,9 +74,6 @@ function deleteProduct(id) {
 }
 
 function updateProduct(e) {
-  console.log(
-    `Hiciste click en el boton update product con el id ${e.target.id}`
-  );
   let campos = e.target.id.split(":");
   let id = campos[1];
   let nombre = campos[2];
@@ -85,7 +91,6 @@ function updateProduct(e) {
   }).then((response) => {
     response.json().then((res) => {
       if (res.success) {
-        console.log(`Se actualizó el producto con id ${id}`);
         socket.emit("new-product");
       }
     });
@@ -120,13 +125,11 @@ function createFormUpdateProduct(id, nombre, precio) {
 }
 
 function clickEnBorrar(e) {
-  console.log(`hizo click en borrar con el id: ${e.target.id}`);
   let id = e.target.id.slice(2);
   deleteProduct(id);
 }
 
 function clickEnEdit(e) {
-  console.log(`hizo click en edit con el id: ${e.target.id}`);
   let campos = e.target.id.split(":");
   let id = campos[0].slice(2);
   let nombre = campos[1];
@@ -154,34 +157,43 @@ function enviarMensaje(evt) {
       let today = new Date();
       let ahora = today.toLocaleString();
       if (frase.substring(0, 1) === "/") {
-        let texto = frase.substring(1);
-        msg_textarea.innerHTML += `
-        <div class="chat-message-right mb-4">
-          <div>
-              <img src="./images/avatar1.png"
-                  class="rounded-circle mr-1" alt="usuario" width="40" height="40">
-              <div class="text-muted small text-nowrap mt-2">${ahora}</div>
-          </div>
-          <div class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
-              <div class="font-weight-bold mb-1">You</div>
-              ${texto}
-          </div>
-        </div>`;
+        if (usuario === "XnobodyX_") {
+          let texto = frase.substring(1);
+          let campos = texto.split(" ");
+          if (campos.length > 1) {
+            if (campos[0] === "join") {
+              usuario = campos[1];
+            }
+          }
+        }
         input_msg.value = "";
-      } else {
-        msg_textarea.innerHTML += `
-          <div class="chat-message-left pb-4">
-            <div>
-                <img src="./images/avatar3.png"
-                    class="rounded-circle mr-1" alt="usuario" width="40" height="40">
-                <div class="text-muted small text-nowrap mt-2">${ahora}</div>
-            </div>
-            <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
-                <div class="font-weight-bold mb-1">Sharon Lessman</div>
-                ${frase}
-            </div>
-          </div>`;
+      } else if (usuario !== "XnobodyX_") {
         input_msg.value = "";
+        const mensaje = {
+          user: usuario,
+          date: ahora,
+          message: frase,
+          avatar: avatar,
+        };
+        fetch("/api/messages", {
+          method: "POST",
+          body: JSON.stringify({ msg: mensaje }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((res) => {
+            res
+              .json()
+              .then((response) => {
+                console.log("Success:", response);
+                socket.emit("new-message");
+              })
+              .catch((e) => console.log(e));
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
       }
     }
   }
@@ -231,5 +243,41 @@ socket.on("all_productos", (productos) => {
   } else {
     html = `<p class="mt-3 mb-3 p-3 aviso">No se encontraron productos</p>`;
     div_prod.innerHTML = html;
+  }
+});
+
+socket.on("all_mensajes", (mensajes) => {
+  let html = "";
+  if (mensajes.length > 0) {
+    mensajes.forEach((m) => {
+      if (m.user === usuario) {
+        html += `
+        <div class="chat-message-right mb-4">
+          <div>
+              <img src="./images/${m.avatar}"
+                  class="rounded-circle mr-1" alt="usuario" width="40" height="40">
+              <div class="text-muted small text-nowrap mt-2">${m.date}</div>
+          </div>
+          <div class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
+              <div class="font-weight-bold mb-1">${usuario}</div>
+              ${m.message}
+          </div>
+        </div>`;
+      } else {
+        html += `
+          <div class="chat-message-left pb-4">
+            <div>
+                <img src="./images/${m.avatar}"
+                    class="rounded-circle mr-1" alt="usuario" width="40" height="40">
+                <div class="text-muted small text-nowrap mt-2">${m.date}</div>
+            </div>
+            <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
+                <div class="font-weight-bold mb-1">${m.user}</div>
+                ${m.message}
+            </div>
+          </div>`;
+      }
+    });
+    msg_textarea.innerHTML = html;
   }
 });

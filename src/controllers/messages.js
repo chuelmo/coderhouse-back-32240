@@ -28,7 +28,7 @@ const getSinceDate = async (req, res) => {
 };
 
 const add = async (req, res) => {
-  const msg = req.body.product;
+  const msg = req.body.msg;
   if (msg) {
     try {
       const mm = new MessageManager(Utils.PATH_PRODUCTS);

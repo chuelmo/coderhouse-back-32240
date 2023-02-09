@@ -11,33 +11,33 @@ const productsSchema = new mongoose.Schema({
   },
   title: {
     type: String,
-    require: true,
+    required: true,
   },
   description: {
     type: String,
-    require: true,
+    required: true,
   },
   code: {
     type: String,
-    require: true,
+    required: true,
     unique: true,
   },
   price: {
     type: Number,
-    require: true,
+    required: true,
   },
   status: {
     type: Boolean,
-    require: true,
+    required: true,
     default: true,
   },
   stock: {
     type: Number,
-    require: true,
+    required: true,
   },
   category: {
     type: String,
-    require: true,
+    required: true,
   },
   thumbnails: {
     type: Array,
