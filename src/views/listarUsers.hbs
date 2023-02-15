@@ -1,0 +1,25 @@
+<div id="productos">
+    <table class="table bg-dark">
+        <tr>
+            <th class="text-warning">Nombre</th>
+            <th class="text-warning">Apellido</th>
+            <th class="text-warning">Correo</th>
+        </tr>
+        {{#each users}}
+        <tr>
+            <td class="text-white">
+                {{this.first_name}}
+            </td>
+            <td class="text-white">
+                {{this.last_name}}
+            </td>
+            <td class="text-white">
+                {{this.email}}
+            </td>
+        </tr>
+        {{/each}}
+    </table>
+    {{#each users}}
+    <p>{{this}}</p>
+    {{/each}}
+</div>
