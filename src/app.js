@@ -5,6 +5,7 @@ import handlebars from "express-handlebars";
 import { Server } from "socket.io";
 import { default as viewsRouter } from "./routes/views.js";
 import { default as messagesRouter } from "./routes/messages.js";
+import { default as productsRouter } from "./routes/products.js";
 import MessageManager from "./dao/dbManagers/MessageManager.js";
 
 dotenv.config();
@@ -35,6 +36,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("./public"));
 app.use("/", viewsRouter);
 app.use("/api/messages", messagesRouter);
+app.use("/api/products", productsRouter);
 
 const httpServer = app.listen(PORT, () => {
   console.log(`Express server listening on port ${PORT}`);
