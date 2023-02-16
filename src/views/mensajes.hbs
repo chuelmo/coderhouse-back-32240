@@ -1,0 +1,33 @@
+{{!-- main.hbs --}}
+{{> barraMenu}}
+
+<main class="content">
+    <div class="container p-0">
+
+        <h1 class="h3 mb-3">Chat Coderhouse-backend-32240</h1>
+        <p>/join nickname para poder chatear</p>
+
+        <div class="card mb-5">
+            <div class="row">
+                <div class="col-12">
+                    <div class="position-relative">
+                        <div class="chat-messages p-4" id="msg_textarea">
+                        </div>
+                    </div>
+
+                    <div class="flex-grow-0 py-3 px-4 border-top">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Escribe tu mensaje"
+                                id="msg_input_text">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+{{> piePagina}}
+
+<script src="./js/chat.js"></script>
