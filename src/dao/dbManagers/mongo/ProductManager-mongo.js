@@ -5,10 +5,15 @@ export default class ProductManager {
     console.log(`Working with mongoose, class ProductManager`);
   }
 
-  async getProducts() {
+  async getProducts(query, limit, page, sort) {
     try {
-      let prods = await productsModel.find({});
-      return prods.map((p) => p.toObject());
+      let prods = await productsModel.paginate(query, {
+        limit,
+        page,
+        sort,
+        lean: true,
+      });
+      return prods;
     } catch (e) {
       throw new Error(e);
     }
@@ -77,7 +82,6 @@ export default class ProductManager {
         product.stock = newProduct?.stock || product.stock;
         product.status = newProduct?.status || product.status;
         product.category = newProduct?.category || product.category;
-        const filter = { _id: ObjectId(id) };
         const update = {
           title: product.title,
           description: product.description,
@@ -88,7 +92,7 @@ export default class ProductManager {
           category: product.category,
         };
         const updatedProduct = await productsModel.findOneAndUpdate(
-          filter,
+          id,
           update,
           {
             returnOriginal: false,
@@ -105,7 +109,7 @@ export default class ProductManager {
 
   async deleteProduct(id) {
     try {
-      await productsModel.deleteOne({ _id: ObjectId(id) });
+      await productsModel.deleteOne({ _id: id });
     } catch (e) {
       throw new Error(e);
     }
