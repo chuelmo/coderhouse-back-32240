@@ -1,15 +1,12 @@
 # coderhouse-back-32240
 
-## Segunda pre-entrega
+## Refactor a nuestro login
 
-### Profesionalizando la BD
-
-- Objetivos generales
-  - Contarás con Mongo como sistema de persistencia.
-  - Tendrás definidos todos los endpoints para poder trabajar con productos y carritos
-- Objetivos específicos
-  - Profesionalizar las consultas de productos con filtros, paginación y ordenamientos.
-  - Profesionalizar la gestión del carrito para implementar los últimos conceptos vistos.
+- Consigna
+  - Con base en el login de nuestro entregable anterior, refactorizar para incluir los nuevos conceptos.
+- Aspectos a incluir
+  - Se deberá contar con un hasheo de contraseña utilizando bcrypt
+  - Se deberá contar con una implementación de passport, tanto para register como para login.
+  - Implementar el método de autenticación de GitHub a la vista de login.
 - Sugerencias
-  - La lógica de negocio que ya tienes hecha no debería cambiar, sólo tu persistencia.
-  - Los nuevos endpoints deben seguir la misma estructura lógica que hemos seguido.
+  - El testeo se realizará de manera muy similar al anterior.
